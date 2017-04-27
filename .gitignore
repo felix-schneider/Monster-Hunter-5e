@@ -178,3 +178,9 @@ TSWLatexianTemp*
 
 # KBibTeX
 *~[0-9]*
+
+gimpstuff
+*.sublime-project
+*.sublime-workspace
+skel.pdf
+monsterhunter.pdf

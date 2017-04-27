@@ -1,0 +1,135 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% Author: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
+% 
+% This program is free software. It comes without any warranty, to the
+% extent permitted by applicable law. You can redistribute it and/or
+% modify it under the terms of the Do What The Fuck You Want To Public
+% License, Version 2, as published by Sam Hocevar. See
+% http://sam.zoy.org/wtfpl/COPYING for more details.
+
+\newlength{\hbArtRealWidth}
+\newlength{\hbArtFakeWidth}
+\newlength{\hbArtRealHeight}
+\newlength{\hbArtFakeHeight}
+\newlength{\hbArtFakeHeightHack}
+
+% XXX why the 1pt offset?
+\newlength{\hbArtLeftOffset}
+\setlength{\hbArtLeftOffset}{\maxof{\foremargin}{\spinemargin}+1pt}
+\newlength{\hbArtOvershootWidth}
+\setlength{\hbArtOvershootWidth}{\maxof{\foremargin}{\spinemargin}-\minof{\foremargin}{\spinemargin}+2pt}
+\newlength{\hbArtTopOffset}
+\setlength{\hbArtTopOffset}{\uppermargin}
+\newlength{\hbArtBottomOffset}
+\setlength{\hbArtBottomOffset}{\paperheight-\uppermargin-\textheight}
+
+% XXX is it wise to use floats for this? they have a LOT of issues. Is
+% it possible to alter the margins of the CURRENT page?  Look into
+% geometry (inserts \clearpage, not good) and/or changepage (works but
+% can't get it to reset the margins on next page automatically)
+
+% XXX: left margin is wrong half the time, we need to overshoot
+
+% W/H ratio, bottom spill fraction, Filename
+\newcommand*{\hbWideBottomArt}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \setlength{\hbArtFakeHeight}{#2\hbArtRealHeight}%
+  \begin{figure*}[!b]%
+    % XXX 1pt offset?
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{\hbArtFakeHeight-\hbArtRealHeight}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
+    \rule{0pt}{\maxof{0pt}{\hbArtFakeHeight-\hbArtBottomOffset}}%
+  \end{figure*}%
+}
+
+\newcommand*{\hbWideTopArt}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \setlength{\hbArtFakeHeight}{#2\hbArtRealHeight}%
+  \begin{figure*}[!t]%
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{-\hbArtTopOffset}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
+    \rule{0pt}{\maxof{0pt}{\hbArtFakeHeight-\hbArtTopOffset}}%
+  \end{figure*}%
+}
+
+% XXX: https://tug.org/TUGboat/tb35-3/tb111beet-banner.pdf
+% It's ugly and limited, but also the best TeX can do
+\newcommand*{\hbWideBottomArtFirstPageFix}{}
+\newcommand*{\hbWideBottomArtFirstPage}[3]{%
+  \FPeval{\result}{1/#1}%
+  \setlength{\hbArtRealHeight}{\result\paperwidth}%
+  \setlength{\hbArtFakeHeight}{#2\hbArtRealHeight}%
+  \setlength{\hbArtFakeHeightHack}{\maxof{0pt}{\hbArtFakeHeight-\hbArtBottomOffset}}%
+  \renewcommand*{\hbWideBottomArtFirstPageFix}{\enlargethispage{-\hbArtFakeHeightHack}}%
+  \begin{figure}[!b]%
+    \begin{rtb*}{\paperwidth+\hbArtOvershootWidth}{-\hbArtLeftOffset}{\hbArtFakeHeight-\hbArtRealHeight}%
+      \includegraphics[width=\paperwidth+\hbArtOvershootWidth,height=\hbArtRealHeight]{#3}
+    \end{rtb*}%
+    \rule{0pt}{\hbArtFakeHeightHack}%
+  \end{figure}%
+}
+
+\newcommand*{\hbFullPageArtHook}[1]{%
+  \AddThispageHook{%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{#1}
+    \end{tb*}%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{assets/full-page-decoration}
+    \end{tb*}%
+  }%
+}
+
+\newcommand*{\hbFullPageArt}[1]{%
+  \clearpage\hbFullPageArtHook{#1}\null\clearpage%
+}
+
+\newcommand*{\hbFloatArt}[2][h]{%
+\begin{figure}[#1]%
+\centering%
+\includegraphics[width=.8\linewidth]{#2}%
+\end{figure}%
+}
+
+% W/H, x-spill, y-spill, x-offset, y-offset, rule-height, floatspec, filename
+\newcommand*{\hbArtCornerInternal}[8]{%
+\setlength{\hbArtFakeWidth}{\linewidth+\hbArtLeftOffset}%
+\FPeval{\result}{1/#3}%
+\setlength{\hbArtRealWidth}{\result\hbArtFakeWidth}%
+\FPeval{\result}{1/#1}%
+\setlength{\hbArtRealHeight}{\result\hbArtRealWidth}%
+\setlength{\hbArtFakeHeight}{#2\hbArtRealHeight}%
+\begin{figure}[#7]%
+\begin{rtb*}{\hbArtRealWidth}{#4}{#5}%
+\includegraphics[width=\hbArtRealWidth]{#8}
+\end{rtb*}%
+\rule{0pt}{\maxof{0pt}{#6}}%
+\end{figure}%
+}
+
+% W/H, top spill, right spill, filename
+\newcommand*{\hbBottomLeftArt}[4]{%
+\hbArtCornerInternal{#1}{#2}{#3}{-\hbArtLeftOffset}{\hbArtFakeHeight-\hbArtRealHeight}{\hbArtFakeHeight-\hbArtBottomOffset}{!b}{#4}%
+}
+
+% W/H, top spill, left spill, filename
+\newcommand*{\hbBottomRightArt}[4]{%
+\hbArtCornerInternal{#1}{#2}{#3}{\hbArtFakeWidth-\hbArtRealWidth}{\hbArtFakeHeight-\hbArtRealHeight}{\hbArtFakeHeight-\hbArtBottomOffset}{!b}{#4}%
+}
+
+% W/H, bottom spill, right spill, filename
+\newcommand*{\hbTopLeftArt}[4]{
+\hbArtCornerInternal{#1}{#2}{#3}{-\hbArtLeftOffset}{-\hbArtTopOffset}{\hbArtFakeHeight-\hbArtTopOffset}{!t}{#4}%
+}
+
+
+% W/H, bottom spill, left spell, filename
+\newcommand*{\hbTopRightArt}[4]{%
+\hbArtCornerInternal{#1}{#2}{#3}{\hbArtFakeWidth-\hbArtRealWidth}{-\hbArtTopOffset}{\hbArtFakeHeight-\hbArtTopOffset}{!t}{#4}%
+}

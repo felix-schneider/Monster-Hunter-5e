@@ -1,0 +1,192 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+% Author: Romain "Artefact2" Dal Maso <artefact2@gmail.com>
+%
+% This program is free software. It comes without any warranty, to the
+% extent permitted by applicable law. You can redistribute it and/or
+% modify it under the terms of the Do What The Fuck You Want To Public
+% License, Version 2, as published by Sam Hocevar. See
+% http://sam.zoy.org/wtfpl/COPYING for more details.
+
+% Parts
+\newcommand*{\hbPartCover}{assets/samples/part-cover}
+\newcommand*{\hbPartSubcover}{assets/samples/part-cover2}
+
+\renewcommand*{\thepart}{\arabic{part}}
+\renewcommand*{\beforepartskip}{\null\vspace*{-55pt}\hspace*{-10pt}}
+%\renewcommand*{\afterpartskip}{\clearpage\hbFullPageArtHook{\hbPartSubcover}}
+\renewcommand*{\printpartname}{\AddThispageHook{%
+    \thispagestyle{part}%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbPartCover}
+    \end{tb*}%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth]{assets/header-part-circ}
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=.5\paperwidth]{assets/header-part}
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{.5\paperwidth}{0pt}
+      \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-part}}
+    \end{tb*}%
+  }%
+  \hspace*{-8pt}\nodesto\fontsize{64pt}{64pt}\selectfont\color{chapter}PART%
+}
+\renewcommand*{\printpartnum}{\nodesto\fontsize{64pt}{64pt}\selectfont\color{chapter}\!\thepart}
+\renewcommand*{\parttitlefont}{\color{chapter}\Large\scaly\bfseries\vspace*{-18pt}\hspace*{-8pt}}
+
+% Chapters
+\newcommand*{\hbChapterHeader}{\AddThispageHook{%
+    \begin{tb*}{.5\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=.5\paperwidth]{assets/header-chapter}
+    \end{tb*}%
+    \begin{tb*}{.5\paperwidth}{.5\paperwidth}{0pt}%
+      \reflectbox{\includegraphics[width=.5\paperwidth]{assets/header-chapter}}
+    \end{tb*}%
+  }%
+}
+\renewcommand*{\chaptitlefont}{\color{chapter}\HUGE\mreaves\raggedright}
+\renewcommand*{\printchaptername}{}
+\renewcommand*{\chapternamenum}{}
+\renewcommand*{\chapnumfont}{\chaptitlefont}
+\makeatletter
+\renewcommand*{\printchapternum}{\hbChapterHeader\chapnumfont \@chapapp\space\thechapter:\space}
+\makeatother
+\renewcommand*{\afterchapternum}{}
+\renewcommand*{\printchapternonum}{\hbChapterHeader}
+\renewcommand*{\beforechapskip}{0pt}
+\renewcommand*{\afterchapskip}{\aftersecskip}
+
+\newcommand*{\hbRootChapter}[1]{%
+  \chapter*{#1}
+  \addcontentsline{toc}{part}{#1}
+  \markboth{#1}{#1}
+}
+
+\newcommand*{\hbAppendix}{%
+  \appendix%
+  \makepsmarks{hbRegular}{%
+    \renewcommand*{\chaptermark}[1]{\markboth{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}{appendix \alph{chapter}\space\rule{1pt}{.4\baselineskip}\space\MakeLowercase{####1}}}%
+    \renewcommand*{\sectionmark}[1]{}%
+  }%
+  \addcontentsline{toc}{part}{Appendix}%
+  \pagestyle{hbRegular}%
+}
+
+\newcommand*{\hbFakeToc}[3]{}
+%\newcommand*{\hbRootAppendix}[1]{%
+%  \let\hbRealToc=\addcontentsline%
+%  \let\addcontentsline=\hbFakeToc%
+%  \chapter{#1}
+%  \let\addcontentsline=\hbRealToc%
+%  \addcontentsline{toc}{part}{Appendix\space\thechapter:\space#1}
+%  \markboth{#1}{#1}
+%}
+\newcommand*{\hbRootAppendix}[1]{%
+  \chapter{#1}
+  \markboth{#1}{#1}
+}
+
+% Sections
+\setsecnumformat{}
+\setsecheadstyle{\color{chapter}\Huge\mreaves\raggedright}
+
+% Subsections
+\newcommand{\ruledsubsec}[1]{%
+  \noindent\begin{minipage}{\linewidth}%
+    \color{chapter}\huge\mreaves\raggedright #1%
+    \par\vspace{-\prevdepth}\vspace{1pt}\color{subsecrule}\rule[\baselineskip]{\linewidth}{1pt}\vspace{-\baselineskip}\vspace{2pt}%
+  \end{minipage}%
+}
+\setsubsecheadstyle{\ruledsubsec}
+\renewcommand*{\aftersubsecskip}{.1\baselineskip}
+
+% Subsubsections
+\setsubsubsecheadstyle{\color{chapter}\LARGE\mreaves}
+\renewcommand*{\aftersubsubsecskip}{\aftersubsecskip}
+
+% Paragraphs and subparagraphs
+\setafterparaskip{-3pt}
+\setaftersubparaskip{-3pt}
+
+% Table of Contents
+\twocoltocetc
+\renewcommand*{\cftsectiondotsep}{0.5}
+
+\renewcommand*{\cftpartfont}{\color{chapter}\LARGE\mreaves}
+
+\newsavebox{\hbPartname}
+\newlength{\hbPartnamew}
+\sbox{\hbPartname}{\cftpartfont Part\space}
+\settowidth{\hbPartnamew}{\usebox{\hbPartname}}
+\renewcommand*{\cftpartname}{\usebox{\hbPartname}}
+
+\renewcommand*{\cftpartaftersnum}{:\space}
+\renewcommand*{\cftpartafterpnum}{\par\vspace{-\prevdepth}\vspace{1pt}\color{subsecrule}\hspace{-\cftpartnumwidth}\hspace{-\hbPartnamew}\hspace{-\cftpartindent}\rule[\baselineskip]{\linewidth}{1pt}\vspace*{-\baselineskip}\vspace{2pt}}
+\renewcommand*{\cftbeforepartskip}{10pt}
+\renewcommand*{\cftpartnumwidth}{15pt}
+
+\renewcommand*{\cftchapterfont}{\color{chapter}\Large\mreaves}
+\renewcommand*{\cftchaptername}{Chapter\space}
+\renewcommand*{\cftappendixname}{Appendix\space}
+\renewcommand*{\cftchapteraftersnum}{:\space}
+\renewcommand*{\cftchapterindent}{10pt}
+\renewcommand*{\cftbeforechapterskip}{5pt}
+
+\renewcommand*{\cftsectionnumwidth}{0pt}
+\renewcommand*{\cftsectionpresnum}{\fontsize{1sp}{0}\selectfont} % XXX
+\renewcommand*{\cftsectionindent}{20pt}
+
+\renewcommand*{\cfttabledotsep}{0.5}
+\renewcommand*{\cfttablenumwidth}{0pt}
+\renewcommand*{\cfttablepresnum}{\fontsize{1sp}{0}\selectfont} % XXX
+\renewcommand*{\cfttableindent}{0pt}
+
+% Cover page
+\newcommand*{\hbCover}{assets/cover}
+\newcommand*{\hbSubcover}{assets/cover2}
+\newcommand{\hbTitle}{Title. Renew me!}
+\newcommand{\hbSubtitle}{Subtitle. Renew me!}
+
+\newcommand{\hbMakecover}{
+  \onecolumn%
+  \thispagestyle{empty}%
+  \AddThispageHook{%
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbCover}
+    \end{tb*}%
+  }%
+  \begin{center}%
+    \vspace*{-15mm}\includegraphics[width=3cm]{assets/dnd-logo-initials}\\*\vspace*{15mm}%
+    \nodesto%
+    \fontsize{48pt}{48pt}\selectfont%
+    \fillstroke{[1]}{[0]}{1.5}{\MakeUppercase\hbTitle}\\*%
+    \normalfont\normalsize\includegraphics[width=.5\paperwidth]{assets/separator}%
+    \LARGE\vfill%
+    % XXX: font doesn't look right
+    \fillstroke{[1]}{[0]}{.5}{\textbf{\hbSubtitle}}%
+  \end{center}%
+  \clearpage%
+  \twocolumn%
+}
+
+\newcommand{\hbMakesubcover}{%
+  \onecolumn%
+  \thispagestyle{empty}%
+  \AddThispageHook{
+    \begin{tb*}{\paperwidth}{0pt}{0pt}%
+      \includegraphics[width=\paperwidth,height=\paperheight]{\hbSubcover}
+    \end{tb*}%
+  }%
+  \begin{center}%
+    \nodesto%
+    \fontsize{48pt}{48pt}\selectfont%
+    \MakeUppercase\hbTitle\\*%
+    \normalfont\normalsize\includegraphics[width=.5\paperwidth]{assets/separator}%
+    \LARGE\vfill%
+    \includegraphics[width=1.5cm]{assets/dnd-logo-amp}%
+  \end{center}%
+  \clearpage%
+  \twocolumn%
+}
