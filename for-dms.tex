@@ -3,11 +3,10 @@
 %\renewcommand*{\hbPartSubcover}{assets/ext/lagiacrus2}
 \part{For DMs}
 
-\chapter{Dungeon Master's Guide}
+\chapter{The Campaign}
 \hbWideBottomArtFirstPage{1.98}{.98}{assets/ext/gore-fight}
 I'm not telling you how to run your game. This book is provided with the information in it to make sure you can run just the game you want in the setting. Everything that I'm writing here are suggestions, some of which I don't even follow myself. I just hope that this book is able to reduce the work load of running your game in the \MH{} universe.
 
-\section{The Campaign}
 I would say that the ``default'' assumption is that the player characters are hunters, starting out at a low rank, and and climbing the hunter ladder through slaying monsters. Some advice about that:
 
 \paragraph{The right tone.} \MH{} has a delightful duality of tone. The people in the cities are always happy, upbeat and jolly. They understand the threat of the monsters, but don't despair and keep a very happy outlook on life. Daily life outside the hunts should have a light, happy and whimsical tone, with side activities revolving about wacky antics of the characters or NPCs. Sometimes these wacky antics can result in a real quest for the players to embark one. Once that happens, the game kicks into a more serious gear. The monsters are believable and credibly dangerous. They don't pull punches and death is a threat which hunters face constantly (or maybe not, more on that later). The hunt is a real life-or-death situation and the players should feel that.
@@ -78,7 +77,7 @@ Make mistakes. Work hard. Get dirty.
 
 Saddle up.
 
-\section{The Monsters and Game Balance}
+\chapter{The Monsters and Game Balance}
 I don't provide stat blocks for the monsters. Maybe one day I will, but for the time being, I consider the lore and ecology information (the ``fluff'') about the monsters more important. Of course, we do need stats for them during a fight. Of course, you can develop your own stat blocks. I suggest using the monster stat table below as a base for developing the monsters. It was originally developed by reddit user \texttt{u/gradenko\_2000} and can be found at \url{https://www.reddit.com/r/dndnext/comments/2wk4in/improving_the_monster_quick_stats_table/}.
 
 The basic assumption that went into the table is this: A monster should die from four hits from each of the four party members. A ``hit'' in this case means an attack action where all attacks hit. A player has a 60\% chance of hitting an appropriate-level monster, the monster has a 40\% chance of hitting that player. The original post then goes on to estimate the amount of damage a fighter will do per round at a given level. Similarly, a monster is supposed to be able to kill a player character with four successful attack rounds.
@@ -157,3 +156,68 @@ Adjust up and down, as well as season, to taste.
 \end{hbNarrowTable}
 
 There. There is no way I could possibly be horribly wrong, is there?
+
+\chapter{Random Tables}
+\section{Building a Random Quest Board}
+So your adventurers are looking at a quest board and you don't know what's on it. Well, first, determine the number of quests available. This is dependend on how remote the location of this board is. A more remote location will usually have fewer quests available. Also, the quests won't change as frequently. Remove about a third of the quests available and add about as many new ones.
+
+\begin{hbNarrowTable}{Quest Quantity}{YCC}
+\textbf{Type of Location} & \textbf{Amount} & \textbf{New Quests\ldots}\\
+Major Guild Hub & 3d10 & every 12 hours\\
+Major Guild Outpost & 2d10 & every day\\
+Minor Guild Outpost & 2d8 & every two days\\
+Large Gathering Hall & 2d6 & every week\\
+Small Gathering Hall & 2d4 & every two weeks\\
+\end{hbNarrowTable}
+
+Next, determine the level of the quest. Roll 2d10 and drop the higher result. The result is the number of stars of the quest.
+
+Next, determine the type of quest. Roll 1d10. If it is higher than twice the level of the quest, the quest is a gathering quest, otherwise it is a hunting quest.
+
+Next, determine the target of the quest. There is a 30\% chance that the target is unknown (determine the target in secret). Gathering quests also have a target, though it is optional and it may also be unknown. To determine the target, randomly determine a monster from the monsters by level table in the monsters chapter that is of the same level as the quest.
+
+\section{Random Encounter Tables}
+These used to be in the wilderness chapter, but I have decided to hide them here, away from the peeking eyes of players.
+
+\begin{hbNarrowTable}{Forest/Jungle Random Encounters}{RY}
+\textbf{d100} & \textbf{Encounter}\\
+ & \tableicon{bnahabraS} Bnahabra$\times$2d4\\
+ & \tableicon{jaggiS} Jaggi/\tableicon{genpreyS} Genprey$\times$2d4\\
+ & \tableicon{ludrothS} Ludroth/\tableicon{maccaoS} Maccao$\times$1d4+1\\
+ & \tableicon{melynxS} Melynx/\smallicon{assets/ext/iconsL/shakalaka} Shakalaka\\
+ & An exploration party attempting to map the forest.\\
+ & \tableicon{great-jaggiS} Great Jaggi/\tableicon{gendromeS} Gendrome\\
+ & \tableicon{bulldromeS} Bulldrome/\tableicon{kecha-wachaS} Kecha Wacha\\
+ & \tableicon{royal-ludrothS} Royal Ludroth/\tableicon{great-maccaoS} Great Maccao\\
+ & \tableicon{arzurosS} Arzuros/\tableicon{congalalaS} Congalala\\
+ & Hunters searching for an unknown monster\\
+ & \tableicon{qurupecoS} Qurupeco/\tableicon{gypcerosS} Gypceros\\
+ & \tableicon{rathianS} Rathian/\tableicon{malfestioS} Malfestio\\
+ & \tableicon{rathalosS} Rathalos\\
+ & \tableicon{duramborosS} Duramboros/\tableicon{glavenusS} Glavenus\\
+ & \tableicon{nargacugaS} Nargacuga/\tableicon{najaralaS} Najarala\\
+ & \tableicon{zinogreS} Zinogre\\
+ & \tableicon{deviljhoS} Deviljho/\tableicon{rajangS} Rajang\\
+ & \smallicon{assets/ext/iconsL/yama-tsukami} Yama Tsukami/\tableicon{chameleosS} Chameleos
+\end{hbNarrowTable}
+
+\begin{hbNarrowTable}{Grassland Random Encounters}{RY}
+\textbf{d100} & \textbf{Encounter}\\
+1-5 & \tableicon{vespoidS} Vespoid$\times$2d4\\
+6-10 & A group of \tableicon{mosswineS}~Mosswine excitedly digging for something. When investigating, you find several \tableicon{mushroom-white}~Choice Mushrooms and a charm with the Mycology ability.\\
+11-18 & You discover tracks. By following them or examining with your knowledge of monsters, you learn that they from a \tableicon{bulldromeS}~Bulldrome, which may attack.\\
+19-25 & You discover a well-hidden ruin built by the ancient civilisation.\\
+26-33 & \tableicon{velocipreyS}~Velociprey$\times$2d4.\\
+34-43 & You come across several \tableicon{melynxS}~Melynx on the prowl.\\
+44-53 & \tableicon{velocidromeS}~Velocidrome\\
+54-60 & You are overtaken by a member of the \tableicon{felyneS}~Felyne mail, mounted on a \tableicon{gargwaS}~Gargwa\\
+61-68 & \tableicon{yian-kut-kuS}~Yian Kut-Ku\\
+69-75 & You come across another hunter party, who are on a quest of their own.\\
+76-80 & 2d10 stampeding \tableicon{aptonothS}~Aptonoth\\
+81-85 & \tableicon{rathianS}~Rathian\\
+86-90 & Near a stream, a caravan has become stuck in the mud.\\
+91-93 & You smell smoke. It is coming from a bushfire some distance away. There is a 50\% chance it was caused by a monster.\\
+94-95 & \tableicon{deviljhoS}~Deviljho\\
+96-98 & From some distance away, you spot the lumbering figure of \smallicon{assets/ext/iconsL/lao-shan-lung}~Lao-Shan Lung.\\
+99-100 & You catch a glimpse of \tableicon{kushala-daoraS}~Kushala Daora, who is preceeded by a massive thunderstorm.\\
+\end{hbNarrowTable}
