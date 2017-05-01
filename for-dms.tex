@@ -43,6 +43,7 @@ We struggle in the dark because we want to bring light into shadow. To show the 
 Recover the relic. Slay the demon. Shut the gate. Rescue the princess. Defeat the army. Kill the assassin. Trick the dragon. Rally the troops. Fight the fight.\par
 Victory. Or death.\par
 This is why we DM. To bring both in equal measures.\par
+But How?\par
 \subsubsection{Well. I'll Tell You.}
 \hbBottomRightArt{.706}{.9}{.85}{assets/ext/najarala-art}
 Its time to get serious about what we are doing. You want to "become a great dungeon master"? Like your heroes whose names you intone like mystical words of power? Perkins. Mercer. Gygax.
@@ -78,7 +79,7 @@ Make mistakes. Work hard. Get dirty.
 Saddle up.
 
 \chapter{The Monsters and Game Balance}
-I don't provide stat blocks for the monsters. Maybe one day I will, but for the time being, I consider the lore and ecology information (the ``fluff'') about the monsters more important. Of course, we do need stats for them during a fight. Of course, you can develop your own stat blocks. I suggest using the monster stat table below as a base for developing the monsters. It was originally developed by reddit user \texttt{u/gradenko\_2000} and can be found at \url{https://www.reddit.com/r/dndnext/comments/2wk4in/improving_the_monster_quick_stats_table/}.
+I don't provide stat blocks for the monsters. The main reason for this is that I have not zeroed in on the balancing of the monsters yet, so I don't want to commit to stat blocks. Of course, we do need stats for them during a fight. Of course, you can develop your own stat blocks. I suggest using the monster stat table below as a base for developing the monsters. It was originally developed by reddit user \texttt{u/gradenko\_2000} and can be found at \url{https://www.reddit.com/r/dndnext/comments/2wk4in/improving_the_monster_quick_stats_table/}.
 
 The basic assumption that went into the table is this: A monster should die from four hits from each of the four party members. A ``hit'' in this case means an attack action where all attacks hit. A player has a 60\% chance of hitting an appropriate-level monster, the monster has a 40\% chance of hitting that player. The original post then goes on to estimate the amount of damage a fighter will do per round at a given level. Similarly, a monster is supposed to be able to kill a player character with four successful attack rounds.
 
@@ -119,7 +120,7 @@ Here are some more ways of spicing up your monster's attacks:
 \paragraph{Status Effects.} I would usually tie the effects to one of the conditions from the \PHB{} and word them like \emph{you are poisoned for 5 rounds. As long as you are poisoned\ldots} In addition to providing unique flavour to a monster's attacks, they can provide crowd control, preventing a player from attacking for a round to make up for the players' damage output, which is invariably higher than you expected. Status effects can range from poison to being covered in mud, snow or poop, being on fire, getting dusted with explosive dust, getting frozen, drenched or shrunk. The different status effects can also have very different ways of getting rid of them. Getting rid of a non-magical status effect should require at least an action. Magical status effects usually allow for saving throws at the end of the player's turn.
 \paragraph{Displacement.} Attacks from these big monsters might fling the players around. Getting knocked around usually requires a Strength saving throw, though if the original attack already had a saving throw, it should probably not use another. Consider scaling the distance covered by how much the saving throw failed.
 \paragraph{Grapple.} Some attacks might pin a target, leading to it being grappled. In these cases, the attacker usually gets to make another attack as a bonus action. Grapple can really eat a character's hit points quickly, especially if it coupled with an effect like restrained. A grapple is usually released if the monster is hit by a dung bomb and fails a Wisdom saving throw.
-\paragraph{Semi-Legendary actions.} Some actions might be quicker than a regular action, but slower than a regular one, or might happen several times throughout a turn (an example would be the three to five charge attacks of \tableicon{tigrexS}~Tigrex). In this case, reduce the initiative of the monster by some amount when it uses the attack, then resume on the new count, which will be in the same round. If the initiative would be reduced below zero, instead increase it to 20 plus the monster's initiative bonus plus the monster's current initiative minus the amount it is reduced after the attack.
+\paragraph{Semi-Legendary actions.} Some actions might be quicker than a regular action, but slower than a legendary action, or might happen several times throughout a turn (an example would be the three to five charge attacks of \tableicon{tigrexS}~Tigrex). In this case, reduce the initiative of the monster by some amount when it uses the attack, then resume on the new count, which will be in the same round. If the initiative would be reduced below zero, instead increase it to 20 plus the monster's initiative bonus plus the monster's current initiative minus the amount it is reduced after the attack.
 
 \subsubsection{Disabling}
 One of the most problematic things to balance are effects which completely disable a monster, such as \emph{bestow curse} or paralysing poison. As we have done before, here are my thoughts on it:
@@ -176,8 +177,20 @@ Next, determine the type of quest. Roll 1d10. If it is higher than twice the lev
 
 Next, determine the target of the quest. There is a 30\% chance that the target is unknown (determine the target in secret). Gathering quests also have a target, though it is optional and it may also be unknown. To determine the target, randomly determine a monster from the monsters by level table in the monsters chapter that is of the same level as the quest.
 
+\begin{hbNarrowTable}{Random Weather Table}{RYYL}
+\textbf{d100} & \textbf{Cold Climate} & \textbf{Temperate Climate} & \textbf{Desert}\\
+01-70 & Cold, calm & Normal for season & Hot, calm\\
+71-80 & Heat Wave (71-73) or cold snap (74-80) & Heat wave (71-75) or cold snap (76-80) & Hot, windy\\
+81-90 & Precipitation (snow) & Normal precipitation for season & Hot, windy\\
+91-99 & Snowstorm & Thunderstorm, snowstorm & Duststorm\\
+100 &   Blizzard & Windstorm, blizzard, hurricane, tornado & Downpour
+\end{hbNarrowTable}
+
 \section{Random Encounter Tables}
 These used to be in the wilderness chapter, but I have decided to hide them here, away from the peeking eyes of players.
+\begin{description}
+  \item[This is a stest] slfjsdklfjskldjflskdjf
+\end{description}
 
 \begin{hbNarrowTable}{Forest/Jungle Random Encounters}{RY}
 \textbf{d100} & \textbf{Encounter}\\
@@ -221,3 +234,6 @@ These used to be in the wilderness chapter, but I have decided to hide them here
 96-98 & From some distance away, you spot the lumbering figure of \smallicon{assets/ext/iconsL/lao-shan-lung}~Lao-Shan Lung.\\
 99-100 & You catch a glimpse of \tableicon{kushala-daoraS}~Kushala Daora, who is preceeded by a massive thunderstorm.\\
 \end{hbNarrowTable}
+
+% Desert:
+% Bnahabra, Cephalos, Remobra, Ioprey, Desert Seltas+Queen, Daimyo Hermitaur, Diablos/Monoblos, Glavenus, Seregios, Rathian, Teostra, Volvidon, Kushala Daora
