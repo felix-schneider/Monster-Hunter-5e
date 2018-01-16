@@ -1,9 +1,31 @@
 %!TEX root = monsterhunter.tex
 %!TEX encoding = UTF-8 Unicode
 
+\newcommand{\monsterheader}[4]{%
+%\vspace{3pt}%
+\noindent\begin{minipage}[c]{1cm}%
+\includegraphics[width=\linewidth]{#1.png}%
+\end{minipage}\hfill%
+\begin{minipage}{\dimexpr -4pt-1cm+\linewidth}%
+\subsection*{#2}\index{#2}%
+{\raisebox{-2pt}[0pt]{#3} \textit{(#4)}\par}%
+\end{minipage}\nopagebreak\\*[3pt]}
+
+\newcommand{\monsterheaderx}[3]{%
+%\vspace{3pt}%
+\noindent\begin{minipage}[c]{1cm}%
+\includegraphics[width=\linewidth]{#1.png}%
+\end{minipage}\hfill%
+\begin{minipage}{\dimexpr -4pt-1cm+\linewidth}%
+\subsection*{#2}%
+{#3\par}%
+\end{minipage}\nopagebreak\\*[3pt]}
+
 \newcommand*{\SBSep}{%
   \noindent\includegraphics[height=5pt,width=\linewidth]{assets/stat-block-separator}\par
 }
+
+\newcommand{\sizecrowns}[2]{\small\tableicon{crown-small}\,#1\,cm\quad\tableicon{crown-gold}\,#2\,cm}
 
 \renewcommand*{\hbPartCover}{assets/ext/lagiacrus}
 \renewcommand*{\hbPartSubcover}{assets/ext/lagiacrus2}
@@ -39,6 +61,124 @@ Without further ado, on to the monsters.
 This page is intentionally left blank.
 \clearpage
 
+
+% =============================================================================
+% -----------------------------------GRAVIOS-----------------------------------
+% =============================================================================
+\section*{Gravios}
+\lipsum[1]
+
+\paragraph*{Something.} \lipsum[4]
+
+\paragraph*{Something Else.} \lipsum[6]
+
+\paragraph*{Whatever.} \lipsum[9]
+
+\begin{hbMonsterNote}[t]
+\monsterheader{assets/ext/icons/gravios}{Gravios}{\FiveStar\FiveStar\FiveStar\FiveStar\FiveStar\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen}{5 Stars}
+\includegraphics[width=\linewidth]{assets/ext/gravios-cover.jpg}
+\SBSep
+\textit{Large wyverns found in volcanic areas. They possess a fiery breath attack and the ability to emit sleeping gas. Their bony carapaces are extremely tough, but expose a surprisingly brittle interior once destroyed.}\\*
+\SBSep
+\begin{hbNakedTable}{LYR}
+ & \textbf{Item Name} & \textbf{Sale Price}\\
+\tableicon{sac-purple} & Sleep Sac & 230z\\
+\tableicon{sac-red} & Flame Sac & 240z\\
+\tableicon{shell-white} & Gravios Shell & 970z\\
+\tableicon{carapace-white} & Gravios Wing & 1,800z\\
+\tableicon{carapace-white} & Gravios Crown & 2,550z\\
+\tableicon{ore-red} & Allfire Stone & 5,160z\\
+\tableicon{monster-jewel-cyan} & Wyvern Gem & 6,000z\\
+\tableicon{mantle-white} & Gravios Pallium & 16,000z
+\end{hbNakedTable}
+{\centering\sizecrowns{1,846}{2,581}\par}
+\end{hbMonsterNote}
+
+\begin{hbMonsterNoteWide}[b]
+\begin{multicols}{2}
+\begin{hbStatBlock}
+\monsterheaderx{assets/ext/icons/rathalos}{Rathalos}{\hbSBType{Huge flying wyvern, unaligned}}
+\begin{hbStatBlockDescription}
+\item[Armor Class] 16 (natural armor)
+\item[Hit Points] 350 (6d10 + 318)
+\item[Speed] 25\,ft., fly 60\,ft.
+\end{hbStatBlockDescription}
+\SBSep
+\hbSBAttributes{23}{10}{19}{10}{13}{16}
+\SBSep
+\begin{hbStatBlockDescription}
+\item[Saving Throws] Dex +3, Con +7, Wis +4
+\item[Skills] Perception +4
+\item[Damage Resistances] fire, poison
+\item[Senses] passive Perception 14
+\item[Languages] \hbNone
+\item[Challenge] 8 (3,900 XP)
+\end{hbStatBlockDescription}
+\SBSep
+
+\paragraph*{Keen Sight.} Rathalos has advantage on Wisdom (Perception) checks that rely on sight.
+
+\paragraph*{Multiturn.} Rathalos takes two turns each round instead of one. Roll initiative seperately for each one. He may not move more than his Move score each round.
+
+\paragraph*{Rage.} When Rathalos has lost 100 hit points, he becomes enraged. While enraged, he takes three turns instead of two, has disadvantage on Dexterity saving throws and certain special attacks become available to him. At the end of each round, Rathalos must make a DC 15 Constitution saving throw to maintain the rage. When the rage ends, Rathalos takes three levels of exhaustion.
+
+\paragraph*{Poison.} The target must make a DC 13 Constitution saving throw or become poisoned. While poisoned, the target takes 7 (2d6) poison damage at the start of each of its turns. A poisoned creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. While Rathalos is enraged, the poison's save DC increases to 16.
+
+\subsubsection*{Actions}
+
+\paragraph*{Multiattack.} Rathalos makes two bite attacks (or equivalent body parts).
+
+\paragraph*{Bite/Wingtalon/Tail/Slam.} \textit{Melee Weapon Attack:} +8 to hit, reach 10\,ft., one target. Hit: 16 (2d10 + 5) piercing damage.
+
+\paragraph*{Claw.} \textit{Melee Weapon Attack:} +8 to hit, reach 0\,ft., one target. Hit: 14 (2d8 + 5) slashing damage and apply poison.
+
+\paragraph*{Roar.} Rathalos lets out a terrifying roar. Each creature within 120 feet of Rathalos and able to hear him must make a DC 13 Constitution saving throw or be freightened and loose concentration. A frightened creature can repeat the saving throw at the end of each of its turns, ending the effect on itself on a success. When Rathalos first becomes enraged, he may roar as a reaction. While Rathalos is enraged, the roar's save DC increases to 16.
+
+\paragraph*{Wing Reatreat.} Rathalos beats his wings, to gain height or distance. All medium or smaller creatures within 10 feet must succeed at a DC 15 Strength saving throw or be knocked prone and lose their reaction.
+
+\paragraph*{Fire Breath.} All creatures in a 20 foot cone in front of Rathalos must make a DC 15 Dexterity saving throw, taking 28 (8d6) fire damage on a failed save, or half as much damage on a successful one.
+
+\paragraph*{Inferno.} Rathalos bathes an area 20 feet in diameter in flame. Creatures inside this area must make a DC 15 Dexterity saving throw, taking 22 (5d8) fire damage on a failed save, or half as much damage on a successful one. The area remains on fire for 3 rounds (or longer, if there is a lot flammable material, like dry undergrowth). A creature ending its turn in the area takes 22 (5d8) fire damage at the end of each of its turns. A creatures takes the same damage when it enters the area for the first time. Rathalos may only use this action while enraged.
+
+\end{hbStatBlock}
+\end{multicols}
+\end{hbMonsterNoteWide}
+
+\paragraph*{Also whatever.} \lipsum[8]
+
+\pagebreak
+
+\subsection{Combat Tactics}
+For Rathalos, there are two types of fighting: Hunting, and defending territory. For the first, he will make use of his venom claws and not commit to an extended engagement.
+
+When defending his territory, however, he will engage and it will not take long for him to bring his full power to bear, making full use of his weight as well as his fire breath, which he keeps in reserve for such occasions, due to its high energy cost.
+
+Rathalos is an aerial predator and will use his ability to fly frequently in order to gain an advantage. From his high position, he makes swooping strikes, only to take to the air again. While he would engage another trespassing wyvern wherever he discovers it, Rathalos may sometimes hold back for a time before deciding to attack hunter parties, waiting for them to enter unfavorable terrain, such as a narrow ravine. If given the choice, he will prefer places where his enemies cannot effectively escape his fire breath.
+
+\subsection*{Moves}
+
+\paragraph*{Swooping Claws.} Rathalos uses the Wing Retreat, and moves upwards. In the air, he chooses a mark. A successful Wisdom (Animal Handling) check may reveal who is going to be attacked. On his next turn, he swoops down again, using his claw attack to poison the target.
+
+\paragraph*{Into the frying pan.} When Rathalos becomes enraged, he can roar as a reaction. This may cause some enemies to become frightened and run away. It can then use Inferno to cut off their retreat.
+
+\paragraph*{Talon Pin.} Another typical attack after coming out of the air is a pinning claw attack, holding the target down (his grapple counts as being restrained) and tearing into the helpless target. It can be very difficult to escape from this pinning move without help.
+
+\begin{hbNarrowTable}[b]{Carves\hbNone roll 6 times}{RY}
+\textbf{d100} & \textbf{Item}\\
+01-30 & \tableicon{shell-red} Rathalos Carapace\\
+31-55 & \tableicon{claw-red} Rath Wingtalon\\
+56-70 & \tableicon{sac-red} Flame Sac x1d4\\
+71-84 & \tableicon{webbing-red} Rathalos Webbing\\
+85-93 & \tableicon{carapace-red} Rathalos Marrow\\
+94-98 & \tableicon{monster-jewel-red} Rathalos Ruby\\
+99-00 & \tableicon{mantle-red} Rathalos Mantle
+\end{hbNarrowTable}
+
+\clearpage
+
+% =============================================================================
+% -----------------------------------RATHALOS----------------------------------
+% =============================================================================
 \section*{Rathalos}
 The King of the Skies, Rathalos, is known throughout the entire world and his authority is respected universally. For only a fool would challenge the king unprepared. Rathalos is the male counterpart to the female Rathian and together they are referred to as the Rath species.
 
@@ -49,19 +189,11 @@ The King of the Skies, Rathalos, is known throughout the entire world and his au
 \paragraph*{Trial by fire.} The first Rathalos hunt is considered a milestone for hunters. It marks the transition from a hunter out of necessity, protecting one's home and the sorrounding area and a professional, full-time hunter who will travel the world, actively seeking out quests in order to take on the biggest and most dangerous monsters. Monsters which one hunts at lower ranks do not compare in size and strength. When Rathalos decides to use all weapons at his disposal, he will not just attack with claws, teeth and talons\hbNone he will rain fire from the sky and can turn entire sections of forest into a wasteland. This sort of all-out fighting will leave him extremely exhausted very quickly, however and he will soon need to retreat and regain his strength. At that point, he will either retreat to his roost or go on to hunt for food immediately. At this time, he is at his most vulnerable, but unlikely to stand and fight.
 
 \begin{hbMonsterNote}[t]
-%\vspace{3pt}%
-\noindent\begin{minipage}[c]{1cm}%
-\includegraphics[width=\linewidth]{assets/ext/icons/rathalos.png}%
-\end{minipage}\hfill%
-\begin{minipage}{\dimexpr -4pt-1cm+\linewidth}%
-\subsection*{Rathalos}\index{Rathalos}%
-%{\textit{Rating: } \raisebox{-2pt}[0pt]{\FiveStar\FiveStar\FiveStar\FiveStar} \textit{(4 Stars)}\par}%
-\raisebox{-2pt}[0pt]{\FiveStar\FiveStar\FiveStar\FiveStar\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen} \textit{(4 Stars)}%
-\end{minipage}\\*[3pt]
+\monsterheader{assets/ext/icons/rathalos}{Rathalos}{\FiveStar\FiveStar\FiveStar\FiveStar\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen\FiveStarOpen}{4 Stars}
 \includegraphics[width=\linewidth]{assets/ext/rathalos-cover.jpg}
-\hbSBSep{}%
+\SBSep
 \textit{Terrible wyverns called "Kings of the Skies". Along with Rathians, they stake wide territories centered around their nests. Rathalos descend on invaders from the sky, attacking with poison claws and breath of fire.}\\*
-\noindent\includegraphics[height=5pt,width=\linewidth]{assets/stat-block-separator}\par
+\SBSep
 \begin{hbNakedTable}{LYR}
  & \textbf{Item Name} & \textbf{Sale Price}\\
 \tableicon{sac-red} & Flame Sac & 240z\\
@@ -72,19 +204,13 @@ The King of the Skies, Rathalos, is known throughout the entire world and his au
 \tableicon{monster-jewel-red} & Rathalos Ruby & 9,700z\\
 \tableicon{mantle-red} & Rathalos Mantle & 15,000z
 \end{hbNakedTable}%\par
-{\centering\small\tableicon{crown-small}\,1,540\,cm\quad\tableicon{crown-gold}\,2,104\,cm\par}
+{\centering\sizecrowns{1,540}{2,104}\par}
 \end{hbMonsterNote}
 
 \begin{hbMonsterNoteWide}[b]
 \begin{multicols}{2}
 \begin{hbStatBlock}
-\noindent\begin{minipage}[c]{1cm}%
-\includegraphics[width=\linewidth]{assets/ext/icons/rathalos.png}%
-\end{minipage}\hfill%
-\begin{minipage}{\dimexpr -4pt-1cm+\linewidth}%
-\subsection*{Rathalos}%
-\hbSBType{Huge flying wyvern, unaligned}
-\end{minipage}\\*[3pt]
+\monsterheaderx{assets/ext/icons/rathalos}{Rathalos}{\hbSBType{Huge flying wyvern, unaligned}}
 \begin{hbStatBlockDescription}
 \item[Armor Class] 16 (natural armor)
 \item[Hit Points] 350 (6d10 + 318)

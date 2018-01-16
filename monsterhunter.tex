@@ -34,19 +34,8 @@
 {\itshape #3\par}%
 \end{minipage}\nopagebreak\\[3pt]\nopagebreak}
 
-\newcommand{\monsterheader}[4]{%
-\vspace{10pt plus 10pt minus 2pt}%
-\noindent\begin{minipage}[c]{1cm}%
-\includegraphics[width=\linewidth]{#1.png}%
-\end{minipage}\hfill%
-\begin{minipage}{\dimexpr -1em-1cm+\linewidth}%
-\subsection*{#2}\index{#2}%
-{\textit{Rating: } \raisebox{-2pt}[0pt]{#3} \textit{(#4)}\par}%
-\end{minipage}\nopagebreak\\*[3pt]}
-
 \newcommand{\smallicon}[1]{\raisebox{-2pt}[0pt]{\includegraphics[height=\baselineskip]{#1}}}
 \newcommand{\tableicon}[1]{\smallicon{assets/ext/icons/#1}}
-\newcommand{\sizecrowns}[2]{\hfill\mbox{\footnotesize\tableicon{crown-small}\,#1\,cm\quad\tableicon{crown-gold}\,#2\,cm\par}}
 
 % For speedup
 \includeonly{monster-listings2}
