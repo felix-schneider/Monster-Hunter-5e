@@ -1,0 +1,121 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+\input{inc/root}
+\usepackage{bbding}
+\usepackage{ifthen} % to omit tables in the monsters section from the lot
+\usepackage[noautomatic]{imakeidx}
+\makeindex[columns=1, title=Monsters Alphabetically]
+\indexsetup{level=\hbRootAppendix,firstpagestyle=hbRegular}
+\twocolumn
+\sloppy
+\setlength{\parindent}{1em}
+
+% The PHB isn't justified. In my opinion, raggedright looks worse, to
+% disable it comment these two lines.
+%\raggedright % Messes up the indent.
+%\setlength{\parindent}{1em}
+
+% Uncomment for white background (for print)
+%\renewcommand{\hbBackground}{assets/background-print}
+
+\newcommand{\DND}{\emph{Dungeons \& Dragons}}
+\newcommand{\PHB}{\emph{Player's Handbook}}
+\newcommand{\DMG}{\emph{Dungeon Master's Guide}}
+\newcommand{\MH}{\emph{Monster Hunter}}
+
+\newcommand{\imageheader}[3]{%
+\vspace{10pt plus 10pt minus 2pt}%
+\noindent\begin{minipage}[c]{1cm}%
+\includegraphics[width=\linewidth]{#1.png}%
+\end{minipage}\hspace{1em}%
+\begin{minipage}{0.8\linewidth}%
+\subsubsection*{#2}%
+{\itshape #3\par}%
+\end{minipage}\nopagebreak\\[3pt]\nopagebreak}
+
+\newcommand{\monsterheader}[4]{%
+\vspace{10pt plus 10pt minus 2pt}%
+\noindent\begin{minipage}[c]{1cm}%
+\includegraphics[width=\linewidth]{#1.png}%
+\end{minipage}\hfill%
+\begin{minipage}{\dimexpr -1em-1cm+\linewidth}%
+\subsection*{#2}\index{#2}%
+{\textit{Rating: } \raisebox{-2pt}[0pt]{#3} \textit{(#4)}\par}%
+\end{minipage}\nopagebreak\\*[3pt]}
+
+\newcommand{\smallicon}[1]{\raisebox{-2pt}[0pt]{\includegraphics[height=\baselineskip]{#1}}}
+\newcommand{\tableicon}[1]{\smallicon{assets/ext/icons/#1}}
+\newcommand{\sizecrowns}[2]{\hfill\mbox{\footnotesize\tableicon{crown-small}\,#1\,cm\quad\tableicon{crown-gold}\,#2\,cm\par}}
+
+% For speedup
+\includeonly{monster-listings2}
+
+\begin{document}
+
+\frontmatter
+
+\renewcommand{\hbTitle}{Monster Hunter \protect\\ in D\&D 5e}
+\renewcommand{\hbSubtitle}{Created by Scaatis, using \texttt{texbrew}\protect\\ \url{https://github.com/Artefact2/texbrew/}}
+\renewcommand*{\hbCover}{assets/ext/classic}
+\hbMakecover
+
+% Use assets/background if you don't want a cover. You can put your
+% own assets under assets/ext/.
+\renewcommand*{\hbSubcover}{assets/ext/classic2}
+\hbMakesubcover
+
+%\paragraph*{Acknowledgments} {\footnotesize \lipsum[100-101]}
+
+\paragraph*{Credits}
+
+{\footnotesize
+\begin{itemize}
+\input{assets/CREDITS.tex}
+%\input{assets/samples/CREDITS.tex} % You can probably omit this if you don't use any of the sample assets
+\input{CREDITS.tex}
+\end{itemize}}
+
+\clearpage
+\tableofcontents*
+
+\listoftables*
+
+\mainmatter
+
+\include{introduction}
+
+%\begin{figure}[b!]
+%%\includegraphics[width=\linewidth]{Guildmarm}
+%\end{figure}
+
+\include{exploring-the-world}
+
+%\hbFullPageArt{assets/ext/damn-wyvern-gems}
+
+%\hbFullPageArt{assets/ext/dangerous-hunt}
+
+\include{hunters-primer}
+
+\include{for-dms}
+
+%\include{monster-listings}
+\include{monster-listings2}
+
+%\chapter{DM's Guide}
+%Todo:
+%\begin{itemize}
+%  \item Random Encounter Tables
+%  \item Foraging rules / foraging tables
+%  \item Crafting rules
+%\end{itemize}
+
+\backmatter
+
+\hbAppendix
+%\addcontentsline{toc}{part}{Appendix}
+
+%\hbRootAppendix{Monsters Alphabetically}
+\printindex
+
+\end{document}
